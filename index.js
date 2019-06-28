@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 var express = require("express");
 const cors = require('cors');
 var app = express();
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 8080;
+const HOST = '0.0.0.0';
 const bodyParser = require("body-parser");
 const controller = require("./api/controller");
 const UserModel = require('./api/schema/user')
@@ -33,7 +34,7 @@ const options = {
 
 mongoose.connect(dbURI, options).then(
   () => {
-    app.listen(port, () => {
+    app.listen(port,HOST,() => {
         console.log("Server listening on port " + port);
        
        });
